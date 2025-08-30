@@ -51,7 +51,7 @@ async fn main() -> anyhow::Result<()> {
             channel.execute(server.serve()).for_each(spawn)
         })
         // Max 10 channels.
-        .buffer_unordered(1000 as usize)
+        .buffer_unordered(10)
         .for_each(|_| async {})
         .await;
     

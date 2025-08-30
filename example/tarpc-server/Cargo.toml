@@ -4,8 +4,9 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+rpc-model = { path = "../rpc-model/" }
+
 tarpc = { version = "0.37.0", features = ["full"] }
 tokio = { version = "1.47.1", features = ["full"] }
-rpc-model = { path = "/home/diegopardo/pytarpc/rpc-model/" }
 anyhow = "1.0.99"
 futures = "0.3.31"

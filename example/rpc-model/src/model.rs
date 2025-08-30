@@ -1,5 +1,4 @@
-
-use pyo3_generator_macro::tarpc_python_client;
+use pytarpc::tarpc_python_client;
 
 #[tarpc_python_client]
 #[tarpc::service]
