@@ -14,3 +14,4 @@ pyo3-async-runtimes = { version = "0.25", features = ["attributes", "tokio-runti
 tarpc = { version = "0.37.0", features = ["serde-transport", "tcp"] }
 tokio-serde = { version = "0.9.0", features = ["bincode"] }
 tokio = { version = "1.47.1" }
+pyo3-generator-macro = { path = "/home/diegopardo/pytarpc/pyo3-generator-macro/" }

@@ -1,15 +1,14 @@
-from rpc_model import PyRpcClient
+from rpc_model import PyRpcAPIClient
 import asyncio
 
 
 async def main():
-    stub = await PyRpcClient.connect("127.0.0.1:5000")
+    stub = await PyRpcAPIClient.connect("127.0.0.1:5000")
+    response = await stub.hello("Diego")
+    print(response)
 
-    many_tasks = asyncio.gather(*[
-        stub.hello(f"Diego + {i}")
-        for i in range(10_000)
-    ])
-    await many_tasks
+    response = await stub.sum_numbers(1, 2)
+    print(response)
 
 
 asyncio.run(main())

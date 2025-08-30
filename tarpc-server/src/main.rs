@@ -16,6 +16,10 @@ impl RpcAPI for AppState {
     async fn hello(self, _context: context::Context, name: String) -> String {
         format!("hello {name}")
     }
+
+    async fn sum_numbers(self, _context: ::tarpc::context::Context, a: i32, b: i32) -> i32 {
+        a + b
+    }
 }
 
 async fn spawn(fut: impl Future<Output = ()> + Send + 'static) {
