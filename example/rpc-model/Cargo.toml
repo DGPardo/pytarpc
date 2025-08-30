@@ -9,7 +9,7 @@ name = "rpc_model"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-pytarpc = { path = "../../" }
+pytarpc = { version = "0.1.0" }
 
 
 pyo3 = { version = "0.25.0", features = ["extension-module"] }
