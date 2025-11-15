@@ -1,6 +1,6 @@
-use std::future::{ready, Future};
+use futures::stream::StreamExt;
 use rpc_model::model::RpcAPI;
-use futures::{stream::StreamExt};
+use std::future::{Future, ready};
 
 use tarpc::{
     context,
@@ -26,19 +26,21 @@ async fn spawn(fut: impl Future<Output = ()> + Send + 'static) {
     tokio::spawn(fut);
 }
 
-
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    let mut listener = tcp::listen("localhost:5000", Bincode::default).await?;
+    let mut listener = tcp::listen("0.0.0.0:5000", Bincode::default).await?;
     let addr = listener.local_addr();
-    
+
     println!("Listening on: {:?}", addr);
 
     listener.config_mut().max_frame_length(usize::MAX);
     listener
         // Ignore accept errors.
         .filter_map(|r| {
-            println!("Received connection from: {:?}", r.as_ref().map(|r| r.peer_addr()));
+            println!(
+                "Received connection from: {:?}",
+                r.as_ref().map(|r| r.peer_addr())
+            );
             ready(r.ok())
         })
         .map(server::BaseChannel::with_defaults)
@@ -54,6 +56,6 @@ async fn main() -> anyhow::Result<()> {
         .buffer_unordered(10)
         .for_each(|_| async {})
         .await;
-    
+
     Ok(())
 }
