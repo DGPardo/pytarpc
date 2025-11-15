@@ -1,5 +1,5 @@
 use futures::stream::StreamExt;
-use rpc_model::model::RpcAPI;
+use rpc_model::model::{CustomDataType, RpcAPI};
 use std::future::{Future, ready};
 
 use tarpc::{
@@ -17,8 +17,12 @@ impl RpcAPI for AppState {
         format!("hello {name}")
     }
 
-    async fn sum_numbers(self, _context: ::tarpc::context::Context, a: i32, b: i32) -> i32 {
+    async fn sum_numbers(self, _context: context::Context, a: i32, b: i32) -> i32 {
         a + b
+    }
+
+    async fn echo(self, _context: context::Context, foo: CustomDataType) -> CustomDataType {
+        foo
     }
 }
 
