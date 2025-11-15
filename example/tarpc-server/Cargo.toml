@@ -7,6 +7,6 @@ edition = "2024"
 rpc-model = { path = "../rpc-model/" }
 
 tarpc = { version = "0.37.0", features = ["full"] }
-tokio = { version = "1.47.1", features = ["full"] }
-anyhow = "1.0.99"
+tokio = { version = "1.48.0", features = ["full"] }
+anyhow = "1.0.100"
 futures = "0.3.31"

@@ -8,7 +8,7 @@ license = "MIT OR Apache-2.0"
 categories = ["api-bindings", "development-tools::ffi"]
 readme = "README.md"
 repository = "https://github.com/DGPardo/pytarpc"
-documentation  = "https://github.com/DGPardo/pytarpc"
+documentation = "https://github.com/DGPardo/pytarpc"
 homepage = "https://github.com/DGPardo/pytarpc"
 
 [lib]
@@ -16,8 +16,11 @@ proc-macro = true
 
 [dependencies]
 proc-macro2 = "1.0"
-pyo3 = { version = "0.25.0", features = ["extension-module"] }
-pyo3-async-runtimes = { version = "0.25", features = ["attributes", "tokio-runtime"] }
+pyo3 = { version = "0.27.0", features = ["extension-module"] }
+pyo3-async-runtimes = { version = "0.27", features = [
+    "attributes",
+    "tokio-runtime",
+] }
 quote = "1.0"
 serde = { version = "1.0", features = ["derive"] }
 syn = { version = "2.0", features = ["full", "extra-traits"] }

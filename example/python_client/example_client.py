@@ -3,7 +3,7 @@ import asyncio
 
 
 async def main():
-    stub = await PyRpcAPIClient.connect("127.0.0.1:5000")
+    stub = await PyRpcAPIClient.connect("0.0.0.0:5000")
     response = await stub.hello("Diego")
     print(response)
 
@@ -12,4 +12,3 @@ async def main():
 
 
 asyncio.run(main())
-

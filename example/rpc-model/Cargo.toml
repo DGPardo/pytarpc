@@ -1,19 +1,21 @@
 [package]
 name = "rpc-model"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [lib]
 name = "rpc_model"
-crate-type = ["cdylib", "rlib"]
+crate-type = ["rlib"]
 
 [dependencies]
-pytarpc = { version = "0.1.0" }
+pytarpc = { path = "../../" }
 
-
-pyo3 = { version = "0.25.0", features = ["extension-module"] }
-pyo3-async-runtimes = { version = "0.25", features = ["attributes", "tokio-runtime"] }
+pyo3 = { version = "0.27.0", features = ["extension-module"] }
+pyo3-async-runtimes = { version = "0.27.0", features = [
+    "attributes",
+    "tokio-runtime",
+] }
 tarpc = { version = "0.37.0", features = ["serde-transport", "tcp"] }
 tokio-serde = { version = "0.9.0", features = ["bincode"] }
 tokio = { version = "1.47.1" }
